@@ -1,3 +1,25 @@
+---
+title: "Green Buildings"
+author: "Apoorv Mehrotra"
+date: "8/23/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(lattice)
+library(grid)
+library(gridExtra)
+library(mosaic)
+library(quantmod)
+library(foreach)
+set.seed(1)
+```
+
 # The case  
 
 Over the past decade, both investors and the general public have paid increasingly close attention to the benefits of environmentally conscious buildings. There are both ethical and economic forces at work here.  In commercial real estate, issues of eco-friendliness are intimately tied up with ordinary decisions about how to allocate capital. In this context, the decision to invest in eco-friendly buildings could pay off in at least four ways.  
@@ -10,6 +32,12 @@ Over the past decade, both investors and the general public have paid increasing
 Of course, much of this is mere conjecture. At the end of the day, tenants may or may not be willing to pay a premium for rental space in green buildings. We can only find out by carefully examining data on the commercial real-estate market.  
 
 We have data on 7,894 commercial rental properties from across the United States. Of these, 685 properties have been awarded either LEED or EnergyStar certification as a green building.
+
+***
+<br>
+<br>
+<br>
+
 
 # The goal
 
@@ -26,6 +54,8 @@ The developer has had someone on her staff, who's been described to her as a "to
 ## Task at hand
 
 The developer listened to this recommendation, understood the analysis, and still felt unconvinced.  She has therefore asked you to revisit the report, so that she can get a second opinion. Based on your analysis of the situation, make a recommendation to the developer.
+
+***
 
 # Approach
 
@@ -55,6 +85,7 @@ df$net <-  as.factor(df$net)
 df$amenities <- as.factor(df$amenities)
 ```
 
+
 ## Possible considerations
 
 1. Outliers were removed based on intuition and not solid numbers
@@ -68,6 +99,7 @@ While the ability of these buildings to distort the analysis is real, there was 
 
 Upon checking the distribution of data in the different bins of leasing rate, we find that data is sparsely present for rates upto 60%. In the graph below, we can clearly see that majority of the buildings are on the higher side of the spectrum.
 
+
 ```{r leasing_rate_bins, echo=FALSE}
 perc_data = c()
 for (i in seq(10,100,10)){
@@ -75,12 +107,13 @@ perc_data = rbind(perc_data, nrow(df%>%filter(leasing_rate<=i))*100/nrow(df))
 }
 df_perc_data <- data.frame(cbind(seq(10,100,by = 10),perc_data))
 colnames(df_perc_data) <- c("Occupancy","Percent_Data")
-df_perc_data
+kable(df_perc_data)
 ```
 
 Since the dataset does not mention the class and amenities of the new building, for simplicity of computation we assume that our building will belong to class a, have amenities=1, rent as net=0 (Since green buildings can lower costs, this can be a potential addition to the income stream)
 
 Further looking at how many class c buildings are present in different data sections,
+
 
 ```{r class c ratio, echo=FALSE}
 class_c = c()
@@ -99,6 +132,7 @@ summary(df%>%filter(leasing_rate<60))
 ```{r df_summary, include=FALSE}
 summary(df)
 ```
+
 
 After some eyeballing on the summary statistics, we can say the following about buildings with less than 60% occupancy(set60):
 
@@ -119,15 +153,16 @@ df_lm1 <- df[ , !(names(df) %in% drops)]
 
 ```
 
+
 ### 2. What all affects occupancy?
 
 One big underlying assumption behind the prediction of the ~8yr time frame for recovering the premium amount is that the building operates at a 90% if not 100% occupancy from day 1. We will run a linear model to find the factors that significantly affect our occupancy rate.
-
 
 ```{r Occupancy_model, include=FALSE}
 linearMod <- lm(leasing_rate ~ ., data=df_lm)
 summary(linearMod)
 ```
+
 From our model, we found that out of the significant ones, the positive are:
 
 1. Size
@@ -150,9 +185,11 @@ Since we do not have exact numbers for these factors for our building, we will a
 
 After observing the distribution of the variables, we will assign buckets for different variables to our data based and couple data points to compare similar buildings for rent as time progresses.
 
+
 ```{r, echo=FALSE}
 hist(df$age, xlab = "Age", main="Histogram of Building Age")
 ```
+
 
 
 ```{r, echo=FALSE}
@@ -184,28 +221,35 @@ We grouped our data into segments, and based on those our building lies in the f
 
 And we will compare green vs. non-green average rents for this cut of the data. Since we do not have any information about the cluster that this building will lie in, we rely on the randomness of the data to give an answer close to real.
 
+
 ```{r, echo=FALSE}
 a <- df_groups%>%filter(amenities==1)%>%filter(net==0)%>%filter(size_bucket=="less_than_500k")%>%filter(age_bucket=="less_than_20")%>%filter(class_a==1)
-a[,5:9]
+kable(a[,5:9])
 ```
+
 We can observe from the computations above that the mean rent for green buildings of class a is lesser than the mean rent for non-green buildings of class a. Same is the case with the median. What's more is that the standard deviation is higher for green buildings, making the investment riskier in short term.
 
 If we go ahead and observe this for older buildings:
 
+
 ```{r, echo=FALSE}
 b <- df_groups%>%filter(amenities==1)%>%filter(net==0)%>%filter(size_bucket=="less_than_500k")%>%filter(age_bucket=="20_and_50")%>%filter(class_a==1)
-b[,5:9]
+kable(b[,5:9])
 ```
 
  Slightly longer term projections of rent from the given data for comparable (green) buildings in size bucket and amenities are much lesser than those for non-green buildings.
  
+***
+
 # Conclusion
  
- Solely based on the data, our suggestion is against the green building for now. If we are able to obtain some more data and information about the location of the clusters and the building in questions, we might be able to further refine the analysis to revise the answer. While from an environmental point of view, a green building sounds sustainable, future-proof and a PR generating asset, we are __unable to monetise the effects of electricity costs, PR costs and returns, CSR costs and returns etc with this data.__ With this kind of a situation and uncertainty due to lack of data on a lot of the important variables that can tell a better story, our recommendation is not to invest an extra $5 Million as there is no guarantee of any extra returns.
+ Solely based on the data, our suggestion is against the green building for now. If we are able to obtain some more data and information about the location of the clusters and the building in questions, we might be able to further refine the analysis to revise the answer. While from an environmental point of view, a green building sounds sustainable, future-proof and a PR generating asset, we are __unable to monetise the effects of electricity costs, PR costs and returns, CSR costs and returns etc on our building with this data.__ With this kind of a situation and uncertainty due to lack of data on a lot of the important variables that can tell a better story, our recommendation is not to invest an extra $5 Million as there is no guarantee of any extra returns.
 
-## Appendix
+***
 
-### Data description
+# Appendix
+
+## Data description
 
 A group of real estate economists constructed the data in the following way.  Of the 1,360 green-certified buildings listed as of December 2007 on the LEED or EnergyStar websites, current information about building characteristics and monthly rents were available for 685 of them.  In order to provide a control population, each of these 685 buildings was matched to a cluster of nearby commercial buildings in the CoStar database.  Each small cluster contains one green-certified building, and all non-rated buildings within a quarter-mile radius of the certified building.  On average, each of the 685 clusters contains roughly 12 buildings, for a total of 7,894 data points.
 
