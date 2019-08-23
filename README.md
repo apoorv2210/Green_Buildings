@@ -52,8 +52,6 @@ EnergyStar certification as a green building.
 
 -----
 
-<br> <br> <br>
-
 # The goal
 
 An Austin real-estate developer is interested in the possible economic

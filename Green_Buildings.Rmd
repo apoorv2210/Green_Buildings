@@ -34,9 +34,6 @@ Of course, much of this is mere conjecture. At the end of the day, tenants may o
 We have data on 7,894 commercial rental properties from across the United States. Of these, 685 properties have been awarded either LEED or EnergyStar certification as a green building.
 
 ***
-<br>
-<br>
-<br>
 
 
 # The goal
