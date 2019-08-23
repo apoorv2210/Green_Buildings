@@ -1,7 +1,7 @@
 Green Buildings - A case study
 ================
 
-This is a typical consulting problem, where a client wants to understand the risks and rewards of investing 5% extra in one of her ventures. I have tried to tell the story behind my recommendations in a way that makes sense to my client without throwing too much technical jargon in the mix.
+This is a typical consulting problem, where a client wants to understand the risks and rewards of investing 5% extra in one of her ventures. I have tried to tell the story behind my recommendations in a way that makes sense to my client without throwing too much technical jargon in the mix. One can extract the [report in a PDF format here](Green_Buildings.pdf)
 
 # About me
 
