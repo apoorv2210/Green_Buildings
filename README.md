@@ -1,6 +1,7 @@
-Green Buildings
+Green Buildings - A case study
 ================
-Apoorv Mehrotra
+
+This is a typical consulting problem, where a client wants to understand the risks and rewards of investing 5% extra in one of her ventures. I have tried to tell the story behind my recommendations in a way that makes sense to my client without throwing too much technical jargon in the mix.
 
 # About me
 
@@ -8,9 +9,6 @@ Hi! I'm __Apoorv Mehrotra__, a graduate student at __McCombs Business School, UT
 
 I am interested in roles that involve translation of business problems into mathematically/statistically solvable problems, and to provide __actionable insights__ that can help my clients and stakeholders reap the rewards of their investment in me.
 
-# About this problem
-
-This is a typical consulting problem, where a client wants to understand the risks and rewards of investing 5% extra in one of her ventures. I have tried to tell the story behind my recommendations in a way that makes sense to my client without throwing too much technical jargon in the mix.
 
 # The case
 
@@ -259,19 +257,30 @@ lesser than those for non-green buildings.
 
 # Conclusion
 
-Solely based on the data, our suggestion is against the green building
-for now. If we are able to obtain some more data and information about
-the location of the clusters and the building in questions, we might be
-able to further refine the analysis to revise the answer. While from an
-environmental point of view, a green building sounds sustainable,
+**Solely based on the data**, our suggestion is against the green building
+for now. This is the reason:
+
+While from an environmental point of view a green building sounds sustainable,
 future-proof and a PR generating asset, we are **unable to monetise the
 effects of electricity costs, PR costs and returns, CSR costs and
-returns etc on our building with this data.** With this kind of a
-situation and uncertainty due to lack of data on a lot of the important
-variables that can tell a better story, our recommendation is not to
-invest an extra $5 Million as there is no guarantee of any extra
-returns.
+returns etc on our building with this data.** With this kind of uncertainty due to lack of data on a lot of the important
+factors that can help tell a better story, our recommendation is not to
+invest an extra $5 Million as there is no guarantee of any extra returns. From the data that we have, we can see that buildings similar to ours in terms of size, age, amenities, renting compliances etc. are likely to have lesser average rental amounts if they are made green vs. if they are made normally. There is **no clear monetary incentive** for green buildings from the data.
 
+-----
+
+# Further Scope
+
+A big reason behind this conclusion is that we are missing data about a lot of important factors like:
+
+1. Resource consumption - electricity, water, waste disposal
+2. Employee satisfaction ratings
+3. Initial cost of construction
+4. Longevity of construction
+5. Geographical data (cost of utilities in target data point vs. other data points)
+6. Data regarding CSR
+
+As and when we get more data, we will be able to provide a more wholistic recommendation that could account for these factors.
 -----
 
 # Appendix
