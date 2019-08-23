@@ -1,7 +1,16 @@
 Green Buildings
 ================
 Apoorv Mehrotra
-8/23/2019
+
+# About me
+
+Hi! I'm __Apoorv Mehrotra__, a graduate student at __McCombs Business School, UT Austin__, currently pursuing my __Master's of Science in Business Analytics__. I have a deep rooted interest in solving problems and storytelling. I have 1 year of experience in Retail analytics which gave me a stronghold on tools like SQL, Python, R, Google BigQuery, MS Excel etc. I joined this Master's program to deepen my knowledge of Statistical concepts that form the fundamentals of analytical problem solving and to sharpen my storytelling skills so that I can help businesses extract maximum value from these concepts without them having to dive deep into the math behind the scenes.
+
+I am interested in roles that involve translation of business problems into mathematically/statistically solvable problems, and to provide __actionable insights__ that can help my clients and stakeholders reap the rewards of their investment in me.
+
+# About this problem
+
+This is a typical consulting problem, where a client wants to understand the risks and rewards of investing 5% extra in one of her ventures. I have tried to tell the story behind my recommendations in a way that makes sense to my client without throwing too much technical jargon in the mix.
 
 # The case
 
